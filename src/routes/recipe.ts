@@ -17,9 +17,27 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.delete('/', async (req, res, next) => {
+router.get('/all', async (req, res, next) => {
   try {
-    const deleted = await Recipe.findOneAndDelete({ _id: req.body.id });
+    const allRecipes = await Recipe.find({});
+    res.status(200).json(allRecipes);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    const recipe = await Recipe.findById(req.params.id);
+    res.status(200).json(recipe);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const deleted = await Recipe.findOneAndDelete({ _id: req.params.id });
     res.status(200).json(deleted);
   } catch (e) {
     next(e);
