@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import logger from './common/logger';
 import router from './routes';
 import { connectDb } from './common/database';
@@ -9,6 +10,9 @@ const port = 3000;
 dotenv.config();
 
 connectDb();
+
+// todo domains
+app.use(cors());
 
 app.use(express.json());
 
