@@ -27,7 +27,7 @@ router.get('/all', async (req, res, next) => {
   }
 });
 
-router.get('/:userid', async (req, res, next) => {
+router.get('/user/:userid', async (req, res, next) => {
   try {
     const allRecipes = await Recipe.find({ userid: req.params.userid });
     res.status(200).json(allRecipes);
