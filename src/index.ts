@@ -5,7 +5,7 @@ import logger from './common/logger';
 import router from './routes';
 import { connectDb } from './common/database';
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 dotenv.config();
 
