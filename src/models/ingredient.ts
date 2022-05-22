@@ -6,6 +6,7 @@ const ingredientSchema = new mongoose.Schema({
   selectedUnit: String,
   units: [],
   category: String,
+  additionalInfo: String,
 });
 
 const Ingredient = mongoose.model('Ingredient', ingredientSchema);

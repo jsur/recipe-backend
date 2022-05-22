@@ -4,12 +4,13 @@ const router = express.Router();
 
 router.post('/', async (req, res, next) => {
   try {
-    const { name, image, instructions, ingredients } = req.body;
+    const { name, image, instructions, ingredients, userid } = req.body;
     const recipe = await Recipe.create({
       name,
       image,
       instructions,
       ingredients,
+      userid,
     });
     res.status(200).json(recipe);
   } catch (e) {
@@ -20,6 +21,15 @@ router.post('/', async (req, res, next) => {
 router.get('/all', async (req, res, next) => {
   try {
     const allRecipes = await Recipe.find({});
+    res.status(200).json(allRecipes);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get('/:userid', async (req, res, next) => {
+  try {
+    const allRecipes = await Recipe.find({ userid: req.params.userid });
     res.status(200).json(allRecipes);
   } catch (e) {
     next(e);
