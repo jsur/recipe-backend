@@ -8,7 +8,7 @@
     "build": "swc src -d dist",
     "build-dev": "yarn run build && NODE_ENV=development node --inspect dist/index.js",
     "dev": "nodemon --ext ts --exec \"yarn run build-dev\"",
-    "start": "yarn run build && NODE_ENV=production node dist/index.js"
+    "start": "NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
